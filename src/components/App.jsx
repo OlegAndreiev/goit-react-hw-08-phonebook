@@ -1,48 +1,51 @@
 import React from 'react';
-import Form from './SectionForm/Form';
-import SectionForm from './SectionForm/SectionForm';
-import SectionContacts from './SectionContacts/SectionContacts';
-import ContactList from './SectionContacts/ContactsList';
-import Filter from './SectionContacts/Filter';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { addContact } from '../Redux/contactsSlice';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { lazy } from 'react';
+// import HomePage from '../pages/HomePage';
+// import LoginPage from '../pages/LoginPage';
+// import RegisterPage from '../pages/RegisterPage';
+// import ContactsPage from '../pages/ContactsPage';
+import { SharedLayout } from './SharedLayout';
+import { RestrictedRoute } from './RestrictedRoute';
+import { PrivateRoute } from './PrivateRoute';
+
+const Home = lazy(() => import('../pages/HomePage'));
+const Login = lazy(() => import('../pages/LoginPage'));
+const Register = lazy(() => import('../pages/RegisterPage'));
+const Contacts = lazy(() => import('../pages/ContactsPage'));
 
 export default function App() {
-  // const dispatch = useDispatch();
-  // const allContacts = useSelector(state => state.contacts);
-
-  // const formSubmitHandler = data => {
-  //   const { id, name, number } = data;
-
-  //   allContacts.find(contact => contact.name === name)
-  //     ? alert(`${name} is already in contacts`)
-  //     : dispatch(
-  //         addContact({
-  //           id: id,
-  //           name: name,
-  //           number: number,
-  //         })
-  //       );
-  // };
-
   return (
-    <div
-      style={{
-        width: 400,
-        padding: 20,
-        marginLeft: 'auto',
-        marginRight: 'auto',
-        borderRadius: 10,
-        backgroundColor: 'white',
-      }}
-    >
-      <SectionForm title="Phonebook">
-        <Form />
-      </SectionForm>
-      <SectionContacts title="Contacts">
-        <Filter />
-        <ContactList />
-      </SectionContacts>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<Home />} />;
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<Register />}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute redirectTo="/contacts" component={<Login />} />
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute redirectTo="/login" component={<Contacts />} />
+            }
+          />
+        </Route>
+      </Routes>
+    </>
   );
 }
