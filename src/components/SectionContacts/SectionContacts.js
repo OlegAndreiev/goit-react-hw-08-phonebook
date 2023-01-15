@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from './SectionContacts.module.css';
 
-const SectionContacts = ({ title, children }) => (
+export const SectionContacts = ({ title, children }) => (
   <section className={css.section}>
-    <h2>{title}</h2>
+    {title && <h2>{title}</h2>}
     {children}
   </section>
 );
 
-export default SectionContacts;
+// export default SectionContacts;
 
 SectionContacts.propTypes = {
   title: PropTypes.string.isRequired,

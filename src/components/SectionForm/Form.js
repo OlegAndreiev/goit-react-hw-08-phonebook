@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from '../../Redux/contacts/operations';
 import { nanoid } from 'nanoid';
 // import PropTypes from 'prop-types';
 import css from './SectionForm.module.css';
 import Loader from '../Loader/Loader';
-import {
-  // addContact,
-  useFetchContactsQuery,
-  useAddContactMutation,
-} from '../../Redux/contactsSlice';
+// import {
+//   // addContact,
+//   useFetchContactsQuery,
+//   useAddContactMutation,
+// } from '../../Redux/contacts/contactsSlice';
+import { selectContacts } from '../../Redux/contacts/selectors';
 
-export default function Form() {
+export const Form = () => {
   // eslint-disable-next-line no-unused-vars
   const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const { data: contacts } = useFetchContactsQuery();
-  const [addContact, { isLoading: isAdding }] = useAddContactMutation();
+  // const { data: contacts } = useFetchContactsQuery();
+  // const [addContact, { isLoading: isAdding }] = useAddContactMutation();
+  const contacts = useSelector(selectContacts);
+  const dispatch = useDispatch();
 
   const handleInputChangeName = event => {
     const { value } = event.currentTarget;
@@ -33,10 +38,12 @@ export default function Form() {
 
     contacts.find(contact => contact.name === name)
       ? alert(`${name} is already in contacts`)
-      : addContact({
-          name: event.currentTarget.elements.name.value,
-          phone: event.currentTarget.elements.number.value,
-        });
+      : dispatch(
+          addContact({
+            name: event.currentTarget.elements.name.value,
+            number: event.currentTarget.elements.number.value,
+          })
+        );
     reset();
   };
 
@@ -83,11 +90,11 @@ export default function Form() {
         </label>
       </div>
       <button className={css.formButton} type="submit">
-        {isAdding ? <Loader /> : 'Add contact'}
+        {/* {isAdding ? <Loader /> : 'Add contact'} */}
       </button>
     </form>
   );
-}
+};
 
 // Form.propTypes = {
 //   onSubmit: PropTypes.func.isRequired,

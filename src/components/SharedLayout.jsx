@@ -1,8 +1,12 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { Container, Header, Link } from './App.styled';
+import { useAuth } from '../hooks/useAuth';
+import { UserMenu } from '../components/UserMenu/UserMenu';
+import { AuthNav } from '../components/AuthNav/AuthNav';
 
 export const SharedLayout = () => {
+  const { isLoggedIn } = useAuth();
   return (
     <Container>
       <Header>
@@ -10,7 +14,8 @@ export const SharedLayout = () => {
           <Link to="/" end>
             Home
           </Link>
-          <Link to="/movies">Movies</Link>
+          {isLoggedIn && <Link to="/contacts">Contacts</Link>}
+          {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </nav>
       </Header>
       <Suspense fallback={null}>

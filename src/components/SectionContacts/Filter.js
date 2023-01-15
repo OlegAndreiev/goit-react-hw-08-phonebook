@@ -1,9 +1,9 @@
 import React from 'react';
 import css from './SectionContacts.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { filterContact } from '../../Redux/contactsSlice';
+import { filterContact } from '../../Redux/contacts/contactsSlice';
 
-const Filter = () => {
+export const Filter = () => {
   const dispatch = useDispatch();
   const inputValue = useSelector(state => state.filter);
 
@@ -25,4 +25,4 @@ const Filter = () => {
   );
 };
 
-export default Filter;
+// export default Filter;
