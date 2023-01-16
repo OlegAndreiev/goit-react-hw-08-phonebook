@@ -10,7 +10,8 @@ import Loader from '../Loader/Loader';
 //   useFetchContactsQuery,
 //   useAddContactMutation,
 // } from '../../Redux/contacts/contactsSlice';
-import { selectContacts } from '../../Redux/contacts/selectors';
+import { selectContacts, selectIsLoading } from '../../Redux/contacts/selectors';
+
 
 export const Form = () => {
   // eslint-disable-next-line no-unused-vars
@@ -58,7 +59,7 @@ export const Form = () => {
     setName('');
     setNumber('');
   };
-
+  const isLoading = useSelector(selectIsLoading);
   return (
     <form className={css.form} onSubmit={handleSubmit}>
       <div>
@@ -90,7 +91,7 @@ export const Form = () => {
         </label>
       </div>
       <button className={css.formButton} type="submit">
-        {/* {isAdding ? <Loader /> : 'Add contact'} */}
+        {isLoading ? <Loader /> : 'Add contact'}
       </button>
     </form>
   );

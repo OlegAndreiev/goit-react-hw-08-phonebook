@@ -1,24 +1,33 @@
 import React from 'react';
-
-import { useDispatch, useSelector } from 'react-redux';
+// oleg mr.oleg@mail.com
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
-import HomePage from '../pages/HomePage';
-import LoginPage from '../pages/LoginPage';
-import RegisterPage from '../pages/RegisterPage';
-import ContactsPage from '../pages/ContactsPage';
+// import HomePage from '../pages/HomePage';
+// import LoginPage from '../pages/LoginPage';
+// import RegisterPage from '../pages/RegisterPage';
+// import ContactsPage from '../pages/ContactsPage';
 import { SharedLayout } from './SharedLayout';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
+// import { miniSerializeError } from '@reduxjs/toolkit';
+import { useAuth } from '../hooks/useAuth';
+import { refreshUser } from '../Redux/auth/operations';
+import Loader from './Loader/Loader';
 
-// const Home = lazy(() => import('../pages/HomePage'));
-// const Login = lazy(() => import('../pages/LoginPage'));
-// const Register = lazy(() => import('../pages/RegisterPage'));
-// const Contacts = lazy(() => import('../pages/ContactsPage'));
+const HomePage = lazy(() => import('../pages/HomePage'));
+const LoginPage = lazy(() => import('../pages/LoginPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage'));
+const ContactsPage = lazy(() => import('../pages/ContactsPage'));
 
 export default function App() {
-  return (
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+  return isRefreshing ? <Loader/> : (
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>

@@ -1,12 +1,14 @@
 import Loader from '../Loader/Loader';
 import css from './SectionContacts.module.css';
-import { useDeleteContactMutation } from '../../Redux/contacts/contactsSlice';
+// import { useDeleteContactMutation } from '../../Redux/contacts/contactsSlice';
 import { deleteContact } from '../../Redux/contacts/operations';
 import { useDispatch, useSelector } from 'react-redux';
+import {  selectIsLoading } from '../../Redux/contacts/selectors';
 
-export const ContactsListItem = ({ id, name, phone }) => {
+export const ContactsListItem = ({ id, name, number }) => {
   // const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
   return (
     <div className={css.contactsListContainer}>
       <svg
@@ -20,14 +22,14 @@ export const ContactsListItem = ({ id, name, phone }) => {
       <li className={css.contactsListItem} key={id}>
         {name}
         <br />
-        {phone}
+        {number}
       </li>
       <button
         style={{ width: 60 }}
         className={css.contactsListButton}
         onClick={() => dispatch(deleteContact(id))}
       >
-        {/* {isDeleting ? <Loader /> : 'Delete'} */}
+        {isLoading ? <Loader /> : 'Delete'}
       </button>
     </div>
   );

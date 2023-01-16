@@ -3,6 +3,7 @@ import { fetchContacts, addContact, deleteContact } from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
+  state.isFetching=true;
 };
 
 const handleRejected = (state, action) => {
@@ -10,7 +11,7 @@ const handleRejected = (state, action) => {
   state.error = action.payload;
 };
 
-const contactsInitialState = { items: [], isLoading: false, error: null };
+const contactsInitialState = { items: [], isLoading: false, isFetching: false, error: null };
 
 const contactsSlice = createSlice({
   name: 'contacts',
@@ -23,7 +24,7 @@ const contactsSlice = createSlice({
       state.items = action.payload;
     },
     [fetchContacts.rejected]: handleRejected,
-    //------
+    
     [addContact.pending]: handlePending,
     [addContact.fulfilled](state, action) {
       state.isLoading = false;
@@ -31,7 +32,7 @@ const contactsSlice = createSlice({
       state.items.push(action.payload);
     },
     [addContact.rejected]: handleRejected,
-    //--------
+    
     [deleteContact.pending]: handlePending,
     [deleteContact.fulfilled](state, action) {
       state.isLoading = false;
