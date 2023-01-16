@@ -13,9 +13,9 @@
 // });
 
 import { configureStore } from '@reduxjs/toolkit';
-import { combineReducers } from 'redux';
+// import { combineReducers } from 'redux';
 import { authReducer } from './auth/authSlice';
-import { contactReducer, filterReducer } from './contacts/contactsSlice';
+// import { contactReducer, filterReducer } from './contacts/contactsSlice';
 import {
   persistStore,
   persistReducer,
@@ -27,6 +27,8 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { contactReducer, filterReducer } from './contacts/contactsSlice';
+
 
 const authPersistConfig = {
   key: 'auth',
@@ -34,16 +36,12 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
-const rootReduser = combineReducers({
-  contacts: contactReducer,
-  filter: filterReducer,
-  auth: persistReducer(authPersistConfig, authReducer),
-});
-
-const persistedContactsReducer = persistReducer(authPersistConfig, rootReduser);
-
 export const store = configureStore({
-  reducer: persistedContactsReducer,
+  reducer: {
+    auth: persistReducer(authPersistConfig, authReducer),
+    contacts: contactReducer,
+    filter: filterReducer,
+  },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -54,3 +52,31 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+
+// const authPersistConfig = {
+//   key: 'auth',
+//   storage,
+//   whitelist: ['token'],
+// };
+
+// const rootReduser = combineReducers({
+//   contacts: contactReducer,
+//   filter: filterReducer,
+//   auth: persistReducer(authPersistConfig, authReducer),
+// });
+
+// const persistedContactsReducer = persistReducer(authPersistConfig, rootReduser);
+
+// export const store = configureStore({
+//   reducer: persistedContactsReducer,
+//   middleware: getDefaultMiddleware =>
+//     getDefaultMiddleware({
+//       serializableCheck: {
+//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+//       },
+//     }),
+//   devTools: process.env.NODE_ENV === 'development',
+// });
+
+// export const persistor = persistStore(store);
