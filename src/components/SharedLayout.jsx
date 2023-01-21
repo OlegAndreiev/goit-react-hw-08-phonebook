@@ -9,7 +9,7 @@ export const SharedLayout = () => {
   const { isLoggedIn } = useAuth();
   return (
     <Container>
-      <Header>
+      <Header style={{ overflow: 'hidden', backgroundColor: 'white' }}>
         <nav>
           <Link to="/" end>
             Home

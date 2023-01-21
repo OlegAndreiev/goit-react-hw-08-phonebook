@@ -14,6 +14,11 @@ import {
   selectContacts,
   selectIsLoading,
 } from '../../Redux/contacts/selectors';
+import Box from '@mui/material/Box';
+import Fab from '@mui/material/Fab';
+import AddIcon from '@mui/icons-material/Add';
+import Tooltip from '@mui/material/Tooltip';
+import TextField from '@mui/material/TextField';
 
 export const Form = () => {
   // eslint-disable-next-line no-unused-vars
@@ -63,11 +68,12 @@ export const Form = () => {
   };
   const isLoading = useSelector(selectIsLoading);
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <div>
-        <label className={css.formLabel}>
-          Name
-          <input
+    <div>
+      <form className={css.form} onSubmit={handleSubmit}>
+        <div>
+          <label className={css.formLabel}>
+            {/* Name */}
+            {/* <input
             type="text"
             name="name"
             value={name}
@@ -76,11 +82,24 @@ export const Form = () => {
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
-          />
-        </label>
-        <label className={css.formLabel}>
-          Number
-          <input
+          /> */}
+            <TextField
+              required
+              id="outlined-required"
+              label="Name"
+              defaultValue="Name"
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleInputChangeName}
+              pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+              title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            />
+          </label>
+
+          <label className={css.formLabel}>
+            {/* Number */}
+            {/* <input
             type="tel"
             name="number"
             value={number}
@@ -89,13 +108,32 @@ export const Form = () => {
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
-          />
-        </label>
-      </div>
-      <button className={css.formButton} type="submit">
+          /> */}
+            <TextField
+              required
+              id="outlined-required"
+              label="Number"
+              defaultValue="Number"
+              type="tel"
+              name="number"
+              value={number}
+              onChange={handleInputChangeNumber}
+              pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+            />
+          </label>
+        </div>
+        {/* <button className={css.formButton} type="submit">
         {isLoading ? <Loader /> : 'Add contact'}
-      </button>
-    </form>
+      </button> */}
+        <Tooltip title="Add new contact" sx={{ '& > :not(style)': { m: 1 } }}>
+          <Fab type="submit" color="blue" aria-label="add" title="dfds">
+            {isLoading ? <Loader /> : <AddIcon />}
+          </Fab>
+        </Tooltip>
+      </form>
+      <p style={{ margin: 0, fontSize: 12, color: '#9e9e9e' }}>* - required</p>
+    </div>
   );
 };
 

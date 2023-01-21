@@ -2,6 +2,7 @@ import React from 'react';
 import css from './SectionContacts.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { filterContact } from '../../Redux/contacts/contactsSlice';
+import TextField from '@mui/material/TextField';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -14,13 +15,22 @@ export const Filter = () => {
 
   return (
     <label className={css.filterLabel}>
-      Find contacts by name
+      {/* Find contacts by name
       <input
         className={css.labelInput}
         type="text"
         value={inputValue}
         onChange={filterForContacts}
-      ></input>
+      ></input> */}
+      <TextField
+        // required
+        id="outlined-required"
+        label="Find contacts by name"
+        // defaultValue="Name"
+        type="text"
+        value={inputValue}
+        onChange={filterForContacts}
+      />
     </label>
   );
 };

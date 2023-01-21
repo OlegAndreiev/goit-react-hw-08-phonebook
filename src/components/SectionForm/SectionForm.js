@@ -4,7 +4,7 @@ import css from './SectionForm.module.css';
 
 export const SectionForm = ({ title, children }) => (
   <section className={css.section}>
-    <h2>{title}</h2>
+    {/* <h2>{title}</h2> */}
     {children}
   </section>
 );

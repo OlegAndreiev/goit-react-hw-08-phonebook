@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useEffect } from 'react';
 import { Form } from '../components/SectionForm/Form';
 import { SectionForm } from '../components/SectionForm/SectionForm';
@@ -11,12 +12,26 @@ import {
   selectError,
 } from '../Redux/contacts/selectors';
 import { fetchContacts } from '../Redux/contacts/operations';
+import css from '../components/SectionForm/SectionForm.module.css';
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import Collapse from '@mui/material/Collapse';
+import ExpandLess from '@mui/icons-material/ExpandLess';
+import ExpandMore from '@mui/icons-material/ExpandMore';
+import SendIcon from '@mui/icons-material/Send';
+import ListItemIcon from '@mui/material/ListItemIcon';
 
 export default function Contacts() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   const items = useSelector(selectContacts);
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -33,9 +48,42 @@ export default function Contacts() {
         backgroundColor: 'white',
       }}
     >
-      <SectionForm title="Phonebook">
-        <Form />
-      </SectionForm>
+      <section className={css.section__header}>
+        <h2>PHONEBOOK</h2>
+      </section>
+      <List
+        sx={{ width: '100%', bgcolor: 'background.paper' }}
+        component="nav"
+        aria-labelledby="nested-list-subheader"
+      >
+        <ListItemButton onClick={handleClick}>
+          {/* <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon> */}
+          <ListItemIcon sx={{ minWidth: '0px' }}>
+            <SendIcon />
+          </ListItemIcon>
+          <ListItemText
+            primary="Add new contact"
+            sx={{ textAlign: 'center' }}
+          />
+          {open ? <ExpandLess /> : <ExpandMore />}
+        </ListItemButton>
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          {/* <List component="div" disablePadding>
+            <ListItemButton sx={{ pl: 4 }}>
+              <ListItemIcon>
+                <StarBorder />
+              </ListItemIcon>
+              <ListItemText primary="Starred" />
+            </ListItemButton>
+          </List> */}
+          <SectionForm>
+            <Form />
+          </SectionForm>
+        </Collapse>
+      </List>
+
       <SectionContacts title="Contacts">
         <Filter />
         {isLoading && !error && <b>Request in progress...</b>}
