@@ -10,8 +10,10 @@ import Loader from '../Loader/Loader';
 //   useFetchContactsQuery,
 //   useAddContactMutation,
 // } from '../../Redux/contacts/contactsSlice';
-import { selectContacts, selectIsLoading } from '../../Redux/contacts/selectors';
-
+import {
+  selectContacts,
+  selectIsLoading,
+} from '../../Redux/contacts/selectors';
 
 export const Form = () => {
   // eslint-disable-next-line no-unused-vars

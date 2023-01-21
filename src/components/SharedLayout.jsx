@@ -15,8 +15,8 @@ export const SharedLayout = () => {
             Home
           </Link>
           {isLoggedIn && <Link to="/contacts">Contacts</Link>}
-          {isLoggedIn ? <UserMenu /> : <AuthNav />}
         </nav>
+        {isLoggedIn ? <UserMenu /> : <AuthNav />}
       </Header>
       <Suspense fallback={null}>
         <Outlet />

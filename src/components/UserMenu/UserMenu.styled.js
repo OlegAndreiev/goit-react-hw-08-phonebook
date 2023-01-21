@@ -3,11 +3,13 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 12px;
 `;
 
 export const UserData = styled.p`
-  font-weight: 700;
+  color: black;
+  font-weight: 500;
 `;
 export const UserMenuBtn = styled.button`
   margin: 0 auto;

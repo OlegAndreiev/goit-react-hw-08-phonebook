@@ -7,9 +7,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #e7ecf2;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  background-color: white;
+  /* padding-top: 50px; */
+  /* padding-bottom: 50px; */
 }
 
 code {
