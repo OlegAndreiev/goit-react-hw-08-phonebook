@@ -1,21 +1,19 @@
+import * as React from 'react';
 import Loader from '../Loader/Loader';
 import css from './SectionContacts.module.css';
-// import { useDeleteContactMutation } from '../../Redux/contacts/contactsSlice';
 import { deleteContact } from '../../Redux/contacts/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoading } from '../../Redux/contacts/selectors';
-import * as React from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Paper from '@mui/material/Paper';
 
 export const ContactsListItem = ({ id, name, number }) => {
-  // const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
   const dispatch = useDispatch();
   const isLoading = useSelector(selectIsLoading);
+
   return (
-    // <div >
     <Paper className={css.contactsListContainer} elevation={3}>
       <svg
         className={css.contactsListIcon}
@@ -30,20 +28,11 @@ export const ContactsListItem = ({ id, name, number }) => {
         <br />
         {number}
       </li>
-      {/* <button
-        style={{ width: 60 }}
-        className={css.contactsListButton}
-        onClick={() => dispatch(deleteContact(id))}
-      >
-        {isLoading ? <Loader /> : 'Delete'}
-      </button> */}
       <Tooltip title="Delete contact">
         <IconButton onClick={() => dispatch(deleteContact(id))}>
           {isLoading ? <Loader /> : <DeleteIcon />}
         </IconButton>
       </Tooltip>
     </Paper>
-
-    // </div>
   );
 };

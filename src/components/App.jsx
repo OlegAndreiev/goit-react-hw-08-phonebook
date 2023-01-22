@@ -1,17 +1,12 @@
-import React from 'react';
 // oleg mr.oleg@mail.com
+import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
-// import HomePage from '../pages/HomePage';
-// import LoginPage from '../pages/LoginPage';
-// import RegisterPage from '../pages/RegisterPage';
-// import ContactsPage from '../pages/ContactsPage';
 import { SharedLayout } from './SharedLayout';
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
-// import { miniSerializeError } from '@reduxjs/toolkit';
 import { useAuth } from '../hooks/useAuth';
 import { refreshUser } from '../Redux/auth/operations';
 import Loader from './Loader/Loader';
@@ -27,7 +22,9 @@ export default function App() {
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-  return isRefreshing ? <Loader/> : (
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>

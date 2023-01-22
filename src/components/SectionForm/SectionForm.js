@@ -9,9 +9,7 @@ export const SectionForm = ({ title, children }) => (
   </section>
 );
 
-// export default SectionForm;
-
 SectionForm.propTypes = {
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   children: PropTypes.object.isRequired,
 };

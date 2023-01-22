@@ -6,20 +6,17 @@ import { Container, Header, Link } from './App.styled';
 import { useAuth } from '../hooks/useAuth';
 import { UserMenu } from '../components/UserMenu/UserMenu';
 import { AuthNav } from '../components/AuthNav/AuthNav';
-import backGround from '../images/background2.jpg';
+import backGround from '../images/background.jpg';
 import CssBaseline from '@mui/material/CssBaseline';
 import Fab from '@mui/material/Fab';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Fade from '@mui/material/Fade';
 import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
 
 function ScrollTop(props) {
   const { children, window } = props;
-  // Note that you normally won't need to set the window ref as useScrollTrigger
-  // will default to window.
-  // This is only being set here because the demo is in an iframe.
+
   const trigger = useScrollTrigger({
     target: window ? window() : undefined,
     disableHysteresis: true,
@@ -53,10 +50,6 @@ function ScrollTop(props) {
 
 ScrollTop.propTypes = {
   children: PropTypes.element.isRequired,
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
   window: PropTypes.func,
 };
 
@@ -79,7 +72,6 @@ export const SharedLayout = props => {
         }}
       ></div>
       <Container>
-        {/* <Toolbar /> */}
         <Header>
           <nav>
             <Link to="/" end>
@@ -101,7 +93,6 @@ export const SharedLayout = props => {
       <img
         style={{
           width: '100%',
-          // maxWidth: '100%',
           height: '100%',
           display: 'block',
           position: 'fixed',

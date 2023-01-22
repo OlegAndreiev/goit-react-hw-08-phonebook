@@ -2,19 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../Redux/contacts/operations';
 import { nanoid } from 'nanoid';
-// import PropTypes from 'prop-types';
 import css from './SectionForm.module.css';
 import Loader from '../Loader/Loader';
-// import {
-//   // addContact,
-//   useFetchContactsQuery,
-//   useAddContactMutation,
-// } from '../../Redux/contacts/contactsSlice';
 import {
   selectContacts,
   selectIsLoading,
 } from '../../Redux/contacts/selectors';
-import Box from '@mui/material/Box';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import Tooltip from '@mui/material/Tooltip';
@@ -25,8 +18,6 @@ export const Form = () => {
   const [id, setId] = useState('');
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  // const { data: contacts } = useFetchContactsQuery();
-  // const [addContact, { isLoading: isAdding }] = useAddContactMutation();
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
@@ -55,12 +46,6 @@ export const Form = () => {
     reset();
   };
 
-  //  const handleSubmit = event => {
-  //    event.preventDefault();
-  //    onSubmit({ id, name, number });
-  //    reset();
-  //  };
-
   const reset = () => {
     setId('');
     setName('');
@@ -72,17 +57,6 @@ export const Form = () => {
       <form className={css.form} onSubmit={handleSubmit}>
         <div>
           <label className={css.formLabel}>
-            {/* Name */}
-            {/* <input
-            type="text"
-            name="name"
-            value={name}
-            className={css.labelInput}
-            onChange={handleInputChangeName}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          /> */}
             <TextField
               required
               id="outlined-required"
@@ -98,17 +72,6 @@ export const Form = () => {
           </label>
 
           <label className={css.formLabel}>
-            {/* Number */}
-            {/* <input
-            type="tel"
-            name="number"
-            value={number}
-            className={css.labelInput}
-            onChange={handleInputChangeNumber}
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          /> */}
             <TextField
               required
               id="outlined-required"
@@ -123,11 +86,8 @@ export const Form = () => {
             />
           </label>
         </div>
-        {/* <button className={css.formButton} type="submit">
-        {isLoading ? <Loader /> : 'Add contact'}
-      </button> */}
         <Tooltip title="Add new contact" sx={{ '& > :not(style)': { m: 1 } }}>
-          <Fab type="submit" color="blue" aria-label="add" title="dfds">
+          <Fab type="submit" color="blue" aria-label="add">
             {isLoading ? <Loader /> : <AddIcon />}
           </Fab>
         </Tooltip>
@@ -136,7 +96,3 @@ export const Form = () => {
     </div>
   );
 };
-
-// Form.propTypes = {
-//   onSubmit: PropTypes.func.isRequired,
-// };

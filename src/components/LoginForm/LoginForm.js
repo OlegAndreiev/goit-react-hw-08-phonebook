@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
-import { Form, Label } from './LoginForm.styled';
+import { Form } from './LoginForm.styled';
 import { logIn } from '../../Redux/auth/operations';
-import { LogInBtn } from './LoginForm.styled';
+
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -43,10 +43,6 @@ export const LoginForm = () => {
         Log In
       </h2>
       <Form onSubmit={handleSubmit} autoComplete="off">
-        {/* <Label>
-          Email
-          <input type="email" name="email" />
-        </Label> */}
         <TextField
           required
           id="outlined-required"
@@ -57,10 +53,6 @@ export const LoginForm = () => {
             marginBottom: 20,
           }}
         />
-        {/* <Label>
-          Password
-          <input type="password" name="password" />
-        </Label> */}
         <TextField
           required
           id="outlined-required"
@@ -74,7 +66,6 @@ export const LoginForm = () => {
         <p style={{ margin: 0, fontSize: 12, color: '#9e9e9e' }}>
           * - required
         </p>
-        {/* <LogInBtn type="submit">Log In</LogInBtn> */}
         <Button type="submit">Log In</Button>
       </Form>
     </Paper>

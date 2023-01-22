@@ -15,18 +15,9 @@ export const Filter = () => {
 
   return (
     <label className={css.filterLabel}>
-      {/* Find contacts by name
-      <input
-        className={css.labelInput}
-        type="text"
-        value={inputValue}
-        onChange={filterForContacts}
-      ></input> */}
       <TextField
-        // required
         id="outlined-required"
         label="Find contacts by name"
-        // defaultValue="Name"
         type="text"
         value={inputValue}
         onChange={filterForContacts}
@@ -34,5 +25,3 @@ export const Filter = () => {
     </label>
   );
 };
-
-// export default Filter;

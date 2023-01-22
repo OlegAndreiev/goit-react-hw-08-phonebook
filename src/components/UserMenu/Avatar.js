@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
-// import { deepOrange } from '@mui/material/colors';
 import { styled } from '@mui/material/styles';
 import Badge from '@mui/material/Badge';
 
@@ -12,8 +11,6 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
     '&::after': {
       position: 'absolute',
-      //   top: 0,
-      //   left: 0,
       width: '100%',
       height: '100%',
       borderRadius: '50%',

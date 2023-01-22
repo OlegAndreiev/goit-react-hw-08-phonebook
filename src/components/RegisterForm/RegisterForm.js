@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
-import { Form, Label, RegisterBtn } from './RegisterForm.styled';
+import { Form } from './RegisterForm.styled';
 import { register } from '../../Redux/auth/operations';
 import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
@@ -44,10 +44,6 @@ export const RegisterForm = () => {
         Registration form
       </h2>
       <Form autoComplete="off" onSubmit={handleSubmit}>
-        {/* <Label>
-          Username
-          <input type="text" name="name" />
-        </Label> */}
         <TextField
           required
           id="outlined-required"
@@ -58,10 +54,6 @@ export const RegisterForm = () => {
             marginBottom: 20,
           }}
         />
-        {/* <Label>
-          Email
-          <input type="email" name="email" />
-        </Label> */}
         <TextField
           required
           id="outlined-required"
@@ -72,10 +64,6 @@ export const RegisterForm = () => {
             marginBottom: 20,
           }}
         />
-        {/* <Label>
-          Password
-          <input type="password" name="password" />
-        </Label> */}
         <TextField
           required
           id="outlined-required"
@@ -86,7 +74,6 @@ export const RegisterForm = () => {
             marginBottom: 20,
           }}
         />
-        {/* <RegisterBtn type="submit">Register</RegisterBtn> */}
         <p style={{ margin: 0, fontSize: 12, color: '#9e9e9e' }}>
           * - required
         </p>

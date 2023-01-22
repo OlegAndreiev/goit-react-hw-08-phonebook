@@ -11,11 +11,8 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // width: 100%;
   gap: 12px;
-  // padding: 8px 0;
   background-color: white;
-  // border-bottom: 1px solid black;
   > nav {
     display: flex;
   }

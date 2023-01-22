@@ -6,12 +6,7 @@ import IconButton from '@mui/material/IconButton';
 import Avatar from '@mui/material/Avatar';
 
 export const AuthNav = () => {
-  const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleChange = event => {
-    setAuth(event.target.checked);
-  };
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
@@ -22,10 +17,6 @@ export const AuthNav = () => {
   };
 
   return (
-    // <div>
-    //   <LinkNav to="/register">Register</LinkNav>
-    //   <LinkNav to="/login">Log In</LinkNav>
-    // </div>
     <div>
       <IconButton
         size="large"
@@ -35,7 +26,6 @@ export const AuthNav = () => {
         onClick={handleMenu}
         color="inherit"
       >
-        {/* <AccountCircle /> */}
         <Avatar src="/broken-image.jpg" />
       </IconButton>
       <Menu

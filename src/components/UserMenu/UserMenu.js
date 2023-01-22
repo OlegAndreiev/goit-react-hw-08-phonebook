@@ -1,18 +1,10 @@
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
-import { Wrapper, UserData, UserMenuBtn } from './UserMenu.styled';
+import { Wrapper, UserData } from './UserMenu.styled';
 import { useAuth } from '../../hooks/useAuth';
 import { logOut } from '../../Redux/auth/operations';
 import LetterAvatars from './Avatar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 
@@ -20,12 +12,7 @@ export const UserMenu = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
 
-  const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleChange = event => {
-    setAuth(event.target.checked);
-  };
 
   const handleMenu = event => {
     setAnchorEl(event.currentTarget);
@@ -38,10 +25,6 @@ export const UserMenu = () => {
   return (
     <Wrapper>
       <UserData>Welcome, {user.name}</UserData>
-      {/* <UserData>{user.email}</UserData> */}
-      {/* <UserMenuBtn type="button" onClick={() => dispatch(logOut())}>
-        Logout
-      </UserMenuBtn> */}
       <div>
         <IconButton
           size="large"
@@ -51,7 +34,6 @@ export const UserMenu = () => {
           onClick={handleMenu}
           color="inherit"
         >
-          {/* <AccountCircle /> */}
           <LetterAvatars userName={user.name} />
         </IconButton>
         <Menu

@@ -1,5 +1,4 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { Form } from '../components/SectionForm/Form';
 import { SectionForm } from '../components/SectionForm/SectionForm';
@@ -23,12 +22,8 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import SendIcon from '@mui/icons-material/Send';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Paper from '@mui/material/Paper';
-import CssBaseline from '@mui/material/CssBaseline';
-import Fab from '@mui/material/Fab';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import Fade from '@mui/material/Fade';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
-import Box from '@mui/material/Box';
+import Loader from '../components/Loader/Loader';
+import Typography from '@mui/material/Typography';
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -60,7 +55,18 @@ export default function Contacts() {
       }}
     >
       <section className={css.section__header}>
-        <h2>PHONEBOOK</h2>
+        <Typography
+          variant="h1"
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            margin: 0,
+            paddingTop: 40,
+            fontSize: 48,
+          }}
+        >
+          PHONEBOOK
+        </Typography>
       </section>
       <List
         sx={{ width: '100%', bgcolor: 'background.paper' }}
@@ -68,9 +74,6 @@ export default function Contacts() {
         aria-labelledby="nested-list-subheader"
       >
         <ListItemButton onClick={handleClick}>
-          {/* <ListItemIcon>
-            <InboxIcon />
-          </ListItemIcon> */}
           <ListItemIcon sx={{ minWidth: '0px' }}>
             <SendIcon />
           </ListItemIcon>
@@ -81,23 +84,14 @@ export default function Contacts() {
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItemButton>
         <Collapse in={open} timeout="auto" unmountOnExit>
-          {/* <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 4 }}>
-              <ListItemIcon>
-                <StarBorder />
-              </ListItemIcon>
-              <ListItemText primary="Starred" />
-            </ListItemButton>
-          </List> */}
           <SectionForm>
             <Form />
           </SectionForm>
         </Collapse>
       </List>
-
       <SectionContacts title="Contacts">
         <Filter />
-        {isLoading && !error && <b>Request in progress...</b>}
+        {isLoading && !error && <Loader />}
         {items.length > 0 && <ContactsList />}
       </SectionContacts>
     </Paper>
