@@ -31,7 +31,6 @@
 
 .contactsListItem {
   width: 200px;
-  /* height: 40px; */
   padding: 10px;
   border-radius: 5px;
   text-align: center;
@@ -47,16 +46,13 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  /* border: 1px solid gray; */
   border-radius: 5px;
-  /* height: 100%; */
 }
 .contactsListContainer:not(:last-child) {
   margin-bottom: 10px;
 }
 
 .contactsListButton {
-  /* width: 40px; */
   height: 40px;
   border-radius: 5px;
   border: 1px solid gray;

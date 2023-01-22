@@ -1,9 +1,8 @@
 import React from 'react';
-import css from './Loader.module.css';
 import { ThreeDots } from 'react-loader-spinner';
 
 const Loader = () => (
-  <div className={css.LoaderOverlay}>
+  <div>
     <ThreeDots
       height="10"
       width="100%"
