@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import { useEffect } from 'react';
 import { Form } from '../components/SectionForm/Form';
 import { SectionForm } from '../components/SectionForm/SectionForm';
@@ -22,6 +23,12 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import SendIcon from '@mui/icons-material/Send';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import Paper from '@mui/material/Paper';
+import CssBaseline from '@mui/material/CssBaseline';
+import Fab from '@mui/material/Fab';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import Fade from '@mui/material/Fade';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
+import Box from '@mui/material/Box';
 
 export default function Contacts() {
   const dispatch = useDispatch();

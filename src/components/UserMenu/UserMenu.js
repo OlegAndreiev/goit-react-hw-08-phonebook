@@ -68,6 +68,7 @@ export const UserMenu = () => {
           }}
           open={Boolean(anchorEl)}
           onClose={handleClose}
+          style={{ overflow: 'visible' }}
         >
           <MenuItem onClick={() => dispatch(logOut())}>Logout</MenuItem>
         </Menu>

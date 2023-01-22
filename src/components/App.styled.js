@@ -15,7 +15,7 @@ export const Header = styled.header`
   gap: 12px;
   // padding: 8px 0;
   background-color: white;
-  border-bottom: 1px solid black;
+  // border-bottom: 1px solid black;
   > nav {
     display: flex;
   }

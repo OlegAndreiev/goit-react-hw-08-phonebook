@@ -27,18 +27,46 @@ import { Block } from '@mui/icons-material';
 
 export default function Home() {
   return (
-    <div>
-      <h1
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          margin: 0,
-          paddingTop: 100,
-          fontSize: 36,
-        }}
-      >
-        Welcome to Phonebook
-      </h1>
-    </div>
+    // <div>
+    //   <h1
+    //     style={{
+    //       display: 'flex',
+    //       justifyContent: 'center',
+    //       margin: 0,
+    //       paddingTop: 100,
+    //       fontSize: 36,
+    //     }}
+    //   >
+    //     Welcome to Phonebook
+    //   </h1>
+    // </div>
+    <>
+      <Typography variant="h1">
+        <h1
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            margin: 0,
+            paddingTop: 100,
+            fontSize: 36,
+          }}
+        >
+          Welcome to Phonebook
+        </h1>
+      </Typography>
+      <Typography variant="subtitle1">
+        <h1
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: 100,
+            // paddingTop: 100,
+            fontSize: 14,
+          }}
+        >
+          Welcome to Phonebook
+        </h1>
+      </Typography>
+    </>
   );
 }
