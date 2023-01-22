@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 import { Block } from '@mui/icons-material';
+import { useAuth } from '../hooks/useAuth';
 
 // const styles = {
 //   // container: {
@@ -26,6 +27,7 @@ import { Block } from '@mui/icons-material';
 // };
 
 export default function Home() {
+  const { isLoggedIn } = useAuth();
   return (
     // <div>
     //   <h1
@@ -54,19 +56,21 @@ export default function Home() {
           Welcome to Phonebook
         </h1>
       </Typography>
-      <Typography variant="subtitle1">
-        <h1
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            marginTop: 100,
-            // paddingTop: 100,
-            fontSize: 14,
-          }}
-        >
-          Please register. If you are already a registered user, then login.
-        </h1>
-      </Typography>
+      {!isLoggedIn && (
+        <Typography variant="subtitle1">
+          <h1
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              marginTop: 100,
+              // paddingTop: 100,
+              fontSize: 14,
+            }}
+          >
+            Please register. If you are already a registered user, then login.
+          </h1>
+        </Typography>
+      )}
     </>
   );
 }
