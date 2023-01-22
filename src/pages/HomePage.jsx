@@ -64,7 +64,7 @@ export default function Home() {
             fontSize: 14,
           }}
         >
-          Welcome to Phonebook
+          Please register. If you are already a registered user, then login.
         </h1>
       </Typography>
     </>
