@@ -21,6 +21,7 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import SendIcon from '@mui/icons-material/Send';
 import ListItemIcon from '@mui/material/ListItemIcon';
+import Paper from '@mui/material/Paper';
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -38,10 +39,13 @@ export default function Contacts() {
   }, [dispatch]);
 
   return (
-    <div
+    <Paper
+      elevation={2}
       style={{
         width: 400,
         padding: 20,
+        marginTop: 50,
+        marginBottom: 50,
         marginLeft: 'auto',
         marginRight: 'auto',
         borderRadius: 10,
@@ -89,6 +93,6 @@ export default function Contacts() {
         {isLoading && !error && <b>Request in progress...</b>}
         {items.length > 0 && <ContactsList />}
       </SectionContacts>
-    </div>
+    </Paper>
   );
 }

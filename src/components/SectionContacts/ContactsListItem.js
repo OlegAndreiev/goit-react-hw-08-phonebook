@@ -16,7 +16,7 @@ export const ContactsListItem = ({ id, name, number }) => {
   const isLoading = useSelector(selectIsLoading);
   return (
     // <div >
-    <Paper className={css.contactsListContainer} elevation={1}>
+    <Paper className={css.contactsListContainer} elevation={3}>
       <svg
         className={css.contactsListIcon}
         viewBox="0 0 1024 1024"
